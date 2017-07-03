@@ -24,35 +24,35 @@ public class Filling
     	double x = 0;
     	double y = 0;
     	int i = 0;
-    	
+    
     	//чтение файла
     	try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(
                         new FileInputStream("task.txt"), StandardCharsets.UTF_8))){
             String line;
             while ((line = reader.readLine()) != null) {
-            	d.pushFirst(line);
+            	d.addLast(line); 
             }
         } catch (IOException e) {
     		System.out.println("Not read" + e.toString()); 
-    	}  	
-    	
-    	d.Show();
+    	}  	   	
     	
     	//последний элемент списка
-    	y = Double.valueOf(d.pullLast()); 
-    	d.pushLast(String.valueOf(y));
+    	y = Double.valueOf(d.removeLast()); 
+    	d.addLast(String.valueOf(y));
     	
     	//подсчет элементов
     	while(x != y){
-    		x = Double.valueOf(d.pullFirst());
-    		d.pushLast(String.valueOf(x));
+    		x = Double.valueOf(d.removeFirst());
+    		d.addLast(String.valueOf(x));
     		i++;
     		
-    	}
+    	}	
     	
         //демонстрация того, что очередь осталась в первоначальном виде  
-        d.Show();
+    	d.show();    	
+    	System.out.println("---------");
+    	//количество элементов
         System.out.println(i);
     }
 }
